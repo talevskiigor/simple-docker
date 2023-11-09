@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+
+  ubuntu:
+    container_name: ${PREFIX}_ubuntu
+    build: ./ubuntu
+    ports:
+      - "80:80"
+    tty: true
+    volumes:
+      - ./ubuntu/entrypoint.sh:/usr/local/bin/entrypoint.sh 
+      - ./ubuntu/.bashrc:/home/docker/.bashrc
+      - ./www:/var/www
+      - ./ubuntu/supervisor-laravel-worker.ini:/etc/supervisord.d/supervisor-laravel-worker.ini
+      - ${SSH_AUTH_SOCK}:/ssh-agent
+
+  mariadb:
+    container_name: ${PREFIX}_mariadb
+    image: mariadb:lts-jammy
+    restart: always
+    environment:
+      - MARIADB_ROOT_PASSWORD=root
+      - MARIADB_DATABASE=db
+      - MARIADB_USER=dbuser
+      - MARIADB_PASSWORD=dbpass
+
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+
+volumes:
+  mariadb_data:
