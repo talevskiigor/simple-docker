@@ -13,6 +13,7 @@ services:
       - ./ubuntu/.bashrc:/home/docker/.bashrc
       - ./www:/var/www
       - ./ubuntu/supervisor-laravel-worker.ini:/etc/supervisord.d/supervisor-laravel-worker.ini
+      - ./ubuntu/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
       - ${SSH_AUTH_SOCK}:/ssh-agent
 
   mariadb:
@@ -30,6 +31,17 @@ services:
     volumes:
       - mariadb_data:/var/lib/mysql
 
+  meilisearch:
+    container_name: ${PREFIX}_meilisearch
+    # build: ./meilisearch
+    image: getmeili/meilisearch:v1.4
+    ports:
+      - "7700:7700"
+    volumes:
+      - meili_data:/meili_data  
+    environment:
+      -  MEILI_MASTER_KEY=MASTER_KEY
 
 volumes:
   mariadb_data:
+  meili_data:

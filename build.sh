@@ -4,4 +4,4 @@ if [ -f .env ]; then
     export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
 fi
 
-docker exec -ti ${PREFIX}_ubuntu bash
+docker-compose --project-name "${PREFIX}" build ${PREFIX}_meilisearch

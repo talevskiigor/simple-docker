@@ -111,6 +111,10 @@ RUN service apache2 start
 RUN apt-get install -y php-curl
 RUN apt-get install -y php-zip
 
+RUN apt-get install -y netcat
+
+RUN a2enmod rewrite
+
 USER docker
 
 
