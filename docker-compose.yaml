@@ -3,7 +3,7 @@ version: '3.9'
 services:
 
   ubuntu:
-    container_name: ${PREFIX}_ubuntu
+    container_name: ${PREFIX}ubuntu
     build: ./ubuntu
     ports:
       - "80:80"
@@ -14,10 +14,11 @@ services:
       - ./www:/var/www
       - ./ubuntu/supervisor-laravel-worker.ini:/etc/supervisord.d/supervisor-laravel-worker.ini
       - ./ubuntu/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
+      - ./ubuntu/20-xdebug.ini:/etc/php/8.1/cli/conf.d/20-xdebug.ini
       - ${SSH_AUTH_SOCK}:/ssh-agent
 
   mariadb:
-    container_name: ${PREFIX}_mariadb
+    container_name: ${PREFIX}mariadb
     image: mariadb:lts-jammy
     restart: always
     environment:
@@ -32,7 +33,7 @@ services:
       - mariadb_data:/var/lib/mysql
 
   meilisearch:
-    container_name: ${PREFIX}_meilisearch
+    container_name: ${PREFIX}meilisearch
     # build: ./meilisearch
     image: getmeili/meilisearch:v1.4
     ports:
