@@ -17,6 +17,8 @@ services:
       - ./ubuntu/20-xdebug.ini:/etc/php/8.1/cli/conf.d/20-xdebug.ini
       - ${SSH_AUTH_SOCK}:/ssh-agent
 
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
   mariadb:
     container_name: ${PREFIX}mariadb
     image: mariadb:lts-jammy
