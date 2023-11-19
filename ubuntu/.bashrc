@@ -4,6 +4,9 @@ alias a="php artisan"
 alias c="composer"
 alias e="cd /var/www/html"
 
+git config --global user.email "${GIT_EMAIL}"
+git config --global user.name "${GIT_NAME}"
+
 export PS1="\[\033[33;1m\]\w\[\033[m\] (\[\033[30;1m\]$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\[\033[m\]) $  \n $ "
 
 if [ -f /etc/profile.d/bash_completion.sh ]; then
