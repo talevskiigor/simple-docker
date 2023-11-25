@@ -45,6 +45,20 @@ services:
     environment:
       -  MEILI_MASTER_KEY=MASTER_KEY
 
+  node:
+    container_name: ${PREFIX}node
+    image: "node:18"
+    user: "node"
+    working_dir: /var/www/html
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./:/home/node/app
+      - ./www/html:/var/www/html
+    expose:
+      - "8081"
+    command: "npm run dev"
+
 volumes:
   mariadb_data:
   meili_data:
