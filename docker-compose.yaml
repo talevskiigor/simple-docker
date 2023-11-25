@@ -55,6 +55,8 @@ services:
     volumes:
       - ./:/home/node/app
       - ./www/html:/var/www/html
+    ports:
+      - "5173:5173"
     expose:
       - "8081"
       - "5173"
