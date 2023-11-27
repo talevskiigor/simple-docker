@@ -22,7 +22,7 @@ services:
   mariadb:
     container_name: ${PREFIX}mariadb
     image: mariadb:lts-jammy
-    restart: always
+    # restart: always
     environment:
       - MARIADB_ROOT_PASSWORD=root
       - MARIADB_DATABASE=db
