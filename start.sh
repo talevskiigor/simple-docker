@@ -13,4 +13,6 @@ else
     exit 0
 fi
 
+# docker-compose  --project-name "${PREFIX}" up node
+docker-compose --project-name "${PREFIX}" down
 docker-compose --project-name "${PREFIX}" up
