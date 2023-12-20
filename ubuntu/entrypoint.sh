@@ -1,13 +1,13 @@
 #!/bin/bash
 
-USER_ID=${USER_ID:-1000}
-GIT_USER=${GIT_USER}
-GIT_EMAIL=${GIT_EMAIL}
+export USER_ID=${USER_ID:-1000}
+export GIT_NAME=${GIT_NAME}
+export GIT_EMAIL=${GIT_EMAIL}
 
 export HOME=/home/docker
 
 # echo "export PS1=\"\[\033[33;1m\]\w\[\033[m\] (\[\033[30;1m\]\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\[\033[m\]) \$  \n $ \"" >> /home/docker/.bashrc
-git config --global user.name "$GIT_USER"
+git config --global user.name "$GIT_NAME"
 git config --global user.email "$GIT_EMAIL"
 git config --global core.filemode false
 git config --global credential.helper store

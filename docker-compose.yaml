@@ -17,6 +17,12 @@ services:
       - ./ubuntu/20-xdebug.ini:/etc/php/8.1/cli/conf.d/20-xdebug.ini
       - ${SSH_AUTH_SOCK}:/ssh-agent
 
+    environment:
+      - PHP_IDE_CONFIG=serverName=internetbrands.docker
+      - GIT_NAME=${GIT_NAME}
+      - GIT_EMAIL=${GIT_EMAIL}
+      - SSH_AUTH_SOCK=/ssh-agent
+
     extra_hosts:
       - "host.docker.internal:host-gateway"
   mariadb:

@@ -115,6 +115,8 @@ RUN apt-get install -y netcat
 
 RUN a2enmod rewrite
 
+RUN apt-get install -y bsdmainutils
+RUN apt-get install -y bsdextrautils
 USER docker
 
 

@@ -34,3 +34,5 @@ printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
 echo
 date
 echo
+echo "${GIT_EMAIL}"
+echo "${GIT_NAME}"
