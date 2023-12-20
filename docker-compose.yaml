@@ -44,28 +44,22 @@ services:
       - meili_data:/meili_data  
     environment:
       -  MEILI_MASTER_KEY=MASTER_KEY
-  # node:
-  #   container_name: ${PREFIX}node
-  #   image: "node:18"
-  #   user: "node"
-  #   working_dir: /var/www/html
-  #   environment:
-  #     - NODE_ENV=production
-  #   volumes:
-  #     # - ./:/home/node/app
-  #     - ./www/html:/var/www/html
-  #   ports:
-  #     - "5173:5173"
-  #   command: >
-  #     bash -c "pwd
-  #     && ls -lah 
-  #     && npx -v
-  #     && npm -v
-  #     && node -v
-  #     && npm install -f
-  #     && npx vite build 
-  #     && npm -g vite
-  #     && npm run dev"
+  node:
+    container_name: ${PREFIX}node
+    image: "node:18"
+    user: "node"
+    working_dir: /var/www/html
+    environment:
+      - NODE_ENV=production
+    volumes:
+      # - ./:/home/node/app
+      - ./www/html:/var/www/html
+      # - ./www/html:/home/node/app
+    ports:
+      - "5173:5173"
+    command: >
+      bash -c "pwd
+      && npm run dev"
 
 
 volumes:
