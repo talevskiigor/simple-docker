@@ -117,6 +117,8 @@ RUN a2enmod rewrite
 
 RUN apt-get install -y bsdmainutils
 RUN apt-get install -y bsdextrautils
+
+RUN apt-get install -y mysql-client
 USER docker
 
 
