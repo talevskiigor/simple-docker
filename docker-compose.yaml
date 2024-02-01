@@ -28,7 +28,7 @@ services:
   mariadb:
     container_name: ${PREFIX}mariadb
     image: mariadb:lts-jammy
-    # restart: always
+    restart: always
     environment:
       - MARIADB_ROOT_PASSWORD=root
       - MARIADB_DATABASE=db
@@ -50,6 +50,8 @@ services:
       - meili_data:/meili_data  
     environment:
       -  MEILI_MASTER_KEY=MASTER_KEY
+  
+  
   node:
     container_name: ${PREFIX}node
     image: "node:18"
